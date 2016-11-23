@@ -1,0 +1,25 @@
+/************************
+Nome: Mateus G. Matinato
+Data: 23/11/2016
+Lista 4 - Exercício 1
+************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int ContaDigitos(int n){
+	//A função conta o digito restante da divisão por 10 a cada loop
+	if(n<10) return 1;
+	else return (1+ContaDigitos(n/10));
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int n;
+	printf("Digite um número inteiro: ");
+	scanf("%d", &n);
+	printf("Esse número possui %d dígitos.\n", ContaDigitos(n));
+	system("pause");
+	return 0;
+}
