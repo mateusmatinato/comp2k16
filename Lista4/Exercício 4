@@ -1,0 +1,30 @@
+/************************
+Nome: Mateus G. Matinato
+Data: 23/11/2016
+Lista 4 - Exercício 4
+************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int somaDigitos(int n){
+	int soma=0;
+	if (n<10) return n;
+	//O resto da divisão por 10 é o elemento e soma com o resto do número (n/10)
+	else{
+		soma = n%10 + somaDigitos(n/10);
+		return soma;
+	}
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int n;
+	printf("Digite um numero inteiro: ");
+	scanf("%d", &n);
+	printf("A soma dos digitos de %d é %d.\n",n,somaDigitos(n));
+	system("pause");
+	return 0;
+
+}
