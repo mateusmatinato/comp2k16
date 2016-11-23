@@ -1,0 +1,25 @@
+/************************
+Nome: Mateus G. Matinato
+Data: 23/11/2016
+Lista 4 - Exercício 2
+************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int soma(int n){
+	//A somatória começa no maior valor e vai diminuindo até chegar no 1
+	if(n==1) return 1;
+	else return (n*n)+soma(n-1);
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int n;
+	printf("Digite um número inteiro para efetuar a soma: ");
+	scanf("%d", &n);
+	printf("A somatória de i=1 até n de i² é: %d.\n", soma(n));
+	system("pause");
+	return 0;
+}
