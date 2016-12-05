@@ -1,5 +1,15 @@
 //Funciona porém não me responsabilizo pela lógica por trás dessa belezura HEHEHE
-
+	/* 
+	A função funciona da seguinte maneira: a variável de controle achou irá dizer quando a palavra for encontrada.
+	A variável K serve para contar o tamanho de cada palavra do texto, toda vez que um caractere do texto for diferente de ' ' ela soma 1.
+	Assim, quando encontrar um caractere igual a ' ' no texto verificamos se o tamanho da palavra a ser buscada e K são iguais, caso não
+	sejam iguais não é necessário verificar mais pois não são iguais. Caso o tamanho for o mesmo, a variável n recebe o número da posição
+	em que ocorre a primeira letra da palavra do texto e atribui o valor de N a posição pois caso a palavra for encontrada essa posição que
+	será retornada. Após isso verificamos letra por letra comparando a do texto com a da palavra e caso todas forem iguais atribui o valor 1
+	a variável achei e retorna o valor da variável posição.
+	Obs: eu coloquei o \0 nas condições do if porque quando testei sem ele não considerava a ultima palavra do texto pois essa termina em \0
+	e não em um espaço como as outras. 
+	*/
 
 int encontra(char *texto, char *palavra){
 	int tam,i,posicao,j,k,n,achou,tam2;
