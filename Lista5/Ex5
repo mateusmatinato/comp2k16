@@ -1,2 +1,47 @@
-Nope 2
-Not today 2
+void referencia(char *nome, char *ref){
+	/*
+	Para resolver o problema é necessário descobrir em que posição começa o último nome. Na função defini essa posição
+	como a variável limite, com uma repetição iniciada no fim do nome até o primeiro ' ' e diminuindo o valor de lim.
+	Após encontrar o valor limite, atribui o primeiro caractere da referencia como a primeira letra do nome uma vez que
+	a primeira letra do nome sempre será uma inicial. Em seguida atribui um ponto ao segundo caractere da referência.
+	Após isso fiz um for que vai até a posição limite onde, caso encontre um espaço, significa que o próximo caractere
+	é essencialmente uma inicial. Atribui o valor da referencia como a inicial e a proxima posição sendo um ponto. 
+	Para o sobrenome atribui a variável i o valor da posição limite + 1 pois é a posição da primeira letra do sobrenome
+	e como ela é maiúscula deve ser feita separada das demais. Após isso, fiz um for que vai da posição da segunda letra
+	do ultimo nome até a ultima para atribuir as demais(em minúsculo). 
+	*/
+	int tam,j,i,n,sobr,lim;
+	tam = strlen(nome);	
+	for(lim=tam; nome[lim]!=' ' ;lim--); 
+	
+	//Iniciais 
+	nome[0] = toupper(nome[0]);
+	ref[0] = nome[0]; 
+	ref[1] = '.';  
+	j=2;
+	for(i=1;i<lim;i++){ 
+		if(nome[i]==' '){ 
+			nome[i+1] = toupper(nome[i+1]);
+			ref[j] = nome[i+1]; 
+			j++;
+			ref[j] = '.';
+			j++;
+		}
+	}
+	ref[j] = ' '; 
+	j++;
+	
+	//Sobrenome
+	i = lim + 1; 
+	nome[i] = toupper(nome[i]); 
+	ref[j] = nome[i];
+	j++;
+	i++;
+	for(i;i<tam;i++){
+		nome[i] = tolower(nome[i]);
+		ref[j] = nome[i]; 
+		j++;
+	}
+	ref[j] = '\0'; //Atribuindo a ultima posição como \0
+
+}
