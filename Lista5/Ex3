@@ -1,5 +1,4 @@
-//Funciona porém não me responsabilizo pela lógica por trás dessa belezura HEHEHE
-	/* 
+/* 
 	A função funciona da seguinte maneira: a variável de controle achou irá dizer quando a palavra for encontrada.
 	A variável K serve para contar o tamanho de cada palavra do texto, toda vez que um caractere do texto for diferente de ' ' ela soma 1.
 	Assim, quando encontrar um caractere igual a ' ' no texto verificamos se o tamanho da palavra a ser buscada e K são iguais, caso não
@@ -10,8 +9,6 @@
 	Obs: eu coloquei o \0 nas condições do if porque quando testei sem ele não considerava a ultima palavra do texto pois essa termina em \0
 	e não em um espaço como as outras. 
 	*/
-
-int encontra(char *texto, char *palavra){
 	int tam,i,posicao,j,k,n,achou,tam2;
 	achou = 0;
 	k = 0;
@@ -26,13 +23,14 @@ int encontra(char *texto, char *palavra){
 				n = i - k;
 				posicao = n;
 					for(j=0;j<k;j++){
-						if(texto[n]==palavra[j]) achou = 1;
+						if(texto[n]==palavra[j]) achou++;
 						else achou = 0;
-					n++;
+						n++;
 					}
 				}
+			if(achou != k)achou = 0;
 			k=0;	
-			}
+		}
 	}
 	if(achou==0) posicao = -1;
 	return posicao;		
