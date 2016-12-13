@@ -1,1 +1,33 @@
-Nah
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+void maxmin(int *vetor, int *max, int *min, int n){
+	int mi, ma;
+	if(n==1) {
+		*max = vetor[0];
+		*min = vetor[0];
+		return;
+	}
+	maxmin(vetor,max,min,n-1);
+	ma = *max;
+	mi = *min;
+	if(vetor[n-1]<mi) *min = vetor[n-1];
+	if(vetor[n-1]>ma) *max = vetor[n-1];
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int n, i,vetor[300], max,min;
+	printf("Digite o número de elementos de vetor: ");
+	scanf("%d",&n);
+	printf("Insira o vetor\n");
+	for(i=0;i<n;i++){
+		printf("[%d]= ",i);
+		scanf("%d",&vetor[i]);
+	}
+	maxmin(vetor,&max,&min,n);
+	printf("O elemento máximo é %d e o mínimo é %d.\n\n",max,min);
+}
