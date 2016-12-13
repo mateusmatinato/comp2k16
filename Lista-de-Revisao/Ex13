@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+#include <ctype.h>
+
+void troca(char *palavra){
+	int tam,cont,i;
+	tam = strlen(palavra);
+	for(i=0;i<tam;i++){
+		if(palavra[i]==toupper(palavra[i]) && palavra[i]!=' ') palavra[i] = tolower(palavra[i]);
+		else if(palavra[i]==tolower(palavra[i]) && palavra[i]!=' ') palavra[i] = toupper(palavra[i]);
+	}
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	char palavra[300];
+	printf("Digite a palavra: ");
+	fflush(stdin);
+	scanf("%[^\n]",palavra);
+	printf("Palavra original:\n%s\n",palavra);
+	troca(palavra);
+	printf("Palavra trocada:\n%s\n",palavra);
+	return 0;	
+}
