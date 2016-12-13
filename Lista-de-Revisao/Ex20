@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 101
+
+char *STRPBRK (char *S1, char *S2);
+
+int main()
+{
+	char str1[MAX], str2[MAX];
+	
+	printf ("Entre com uma string (sem acentos): ");
+	scanf ("%100[^\n]", str1);
+	fflush (stdin);
+	
+	printf ("Entre com mais uma string (sem acentos): ");
+	scanf ("%100[^\n]", str2);
+	//fflush(stdin);
+	
+	printf ("Resultado: %s", STRPBRK (str1, str2));
+	
+	return EXIT_SUCCESS;
+}
+
+char *STRPBRK (char *S1, char *S2)
+{
+	int i, j;
+	
+	for (i = 0; S1[i] != '\0'; i++)
+	
+		for (j = 0; S2[j] != '\0'; j++)
+		
+			if (S1[i] == S2[j]) return &S1[i];
+			
+	return (char*)NULL;	
+}
