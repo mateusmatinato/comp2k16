@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+
+void intercala(char *a, char *b, char *c){
+	int i,j,k,tam;
+	i = j = k = 0;
+	tam = strlen(a) + strlen(b);
+		for(k=0;k<tam;j++,i++){
+			c[k] = a[i];
+			k++;
+			c[k] = b[j];
+			k++;
+		}
+		c[k] = '\0';
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	char a[300],b[300],c[300];
+	printf("Digite a primeira string: ");
+	fflush(stdin);
+	scanf("%[^\n]",a);
+	printf("Digite a segunda string: ");
+	fflush(stdin);
+	scanf("%[^\n]",b);
+	intercala(a,b,c);
+	printf("A string intercalada é: \n%s.\n",c);
+}
