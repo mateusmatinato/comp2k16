@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+#include <ctype.h>
+
+int conta(char *palavra){
+	int tam,cont,i;
+	cont = 0;
+	tam = strlen(palavra);
+	for(i=0;i<tam;i++){
+		if(palavra[i]==tolower(palavra[i]) && palavra[i]!=' ') cont ++;
+	}
+	return cont;
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	char palavra[300];
+	printf("Digite a palavra: ");
+	fflush(stdin);
+	scanf("%[^\n]",palavra);
+	printf("A string: \n%s\nPossui %d letras minúsculas.",palavra,conta(palavra));
+	return 0;	
+}
