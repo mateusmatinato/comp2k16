@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+#include <ctype.h>
+
+void data(char *dataorig, char *dataform,char *cidade){
+	int k = 0,i,num;
+	char mes[4];
+	printf("%s, ",cidade);
+	dataform[k] = dataorig[0];
+	k++;
+	dataform[k] = dataorig[1];
+	k++;
+	dataform[k] = '\0';
+	printf("%s de ",dataform);
+	mes[0] = dataorig[3];
+	mes[1] = dataorig[4];
+	mes[2] = '\0';
+	num = atoi(mes);
+	switch(num){
+		case 1: printf("janeiro de "); break;
+		case 2: printf("fevereiro de "); break;
+		case 3: printf("março de "); break;
+		case 4: printf("abril de "); break;
+		case 5: printf("maio de "); break;
+		case 6: printf("junho de "); break;
+		case 7: printf("julho de "); break;
+		case 8: printf("agosto de "); break;
+		case 9: printf("setembro de "); break;
+		case 10: printf("outubro de  "); break;
+		case 11: printf("novembro de "); break;
+		case 12: printf("dezembro de "); break;
+	}
+	k = 6;
+	for(i=0;i<4;i++){
+		dataform[i] = dataorig[k];
+		k++;
+	}
+	printf("%s.\n",dataform);
+}
+
+int main(){
+	setlocale(LC_ALL,"Portuguese");
+	char dataorig[30], dataform[60], cidade[40];
+	printf("Digite a data não formatada: ");
+	fflush(stdin);
+	scanf("%[^\n]",dataorig);
+	printf("Digite a cidade: ");
+	fflush(stdin);
+	scanf("%[^\n]",cidade);
+	data(dataorig,dataform,cidade);
+}
