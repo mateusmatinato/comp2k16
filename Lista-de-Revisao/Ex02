@@ -10,7 +10,7 @@ float potencia(float x, int n){
 		return x * potencia(x,n-1);
 	}
 	if(n<0){
-		return 1/(x * potencia(n,n+1));
+		return 1/(x * potencia(x,-n-1));
 	}
 }
 
