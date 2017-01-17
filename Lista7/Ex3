@@ -1,0 +1,27 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <limits.h>
+#include <time.h>
+
+void GerarVetorAleatoriamente(int vetor[],int n){
+	int i, numero;
+	 srand(time(NULL));
+	for(i=0;i<n;i++){
+		numero = (double) INT_MAX*rand()/(RAND_MAX+1.0);
+		vetor[i] = numero;
+		printf("Vetor[%d] = %d\n",i,vetor[i]);
+	}
+
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int vetor[100], n;
+	printf("Quantos elementos haverá no vetor: ");
+	scanf("%d",&n);
+	GerarVetorAleatoriamente(vetor,n);
+	system("pause");
+	return 0;
+}
