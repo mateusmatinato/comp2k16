@@ -1,0 +1,48 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+
+int VerificaOrdem(int vetor[], int n){
+	int i, ordenado=1;
+	for(i=0;i<n-1 && ordenado==1;i++){
+		if(vetor[i]<vetor[i+1]) ordenado = 1;
+		else ordenado = 0;
+	}
+	return ordenado;
+}
+
+void Bolha(int vetor[], int n){
+	int i,j,aux,trocas=0, troca=1;
+	for(i=0;i<n-1 && troca == 1;i++){
+		troca = 0;
+		for(j=n-1;j>i;j--){
+			if(vetor[j]<vetor[j-1]){
+				troca = 1;
+				aux = vetor[j-1];
+				vetor[j-1] = vetor[j];
+				vetor[j] = aux;
+				trocas++;
+			}
+		}
+	}
+	if(VerificaOrdem(vetor,n)==0) printf("Não está ordenado.\n");
+	else printf("O vetor está ordenado.\n");
+			printf("O número de trocas é: %d.\n",trocas);
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int vetor[100],i, n;
+	printf("Quantos elementos haverá no vetor: ");
+	scanf("%d",&n);
+	printf("Digite o vetor\n");
+	for(i=0;i<n;i++){
+		printf("v[%d]= ",i);
+		scanf("%d",&vetor[i]);
+	}
+	Bolha(vetor,n);
+	system("pause");
+	return 0;
+}
