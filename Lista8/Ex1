@@ -171,8 +171,11 @@ double tempo(){
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
-	int n, i, opcao, esq, dir, v[200000];
-	double duracao, tempoinicial, tempofinal,tempocorrente, tempototal, numero, time;
+	int n, i, opcao, esq,cont, dir,compensa, v[200000];
+	double duracao, tempobuscabin, tempobuscaseq,tempoinicial, tempoinicialbin, tempofinal,tempocorrente, tempototal, numero;
+	
+	cont = 0;
+	compensa = 0;
 	
 	printf("Forneça o tempo máximo que o programa deverá executar: ");
 	scanf("%lf", &duracao);
@@ -194,17 +197,40 @@ int main(){
 		switch(opcao){
 			case 1:{
 				tempoinicial = tempo();
-				tempototal = 0;
+				tempototal = 0;				
 						printf("\nBolha:\n");
-				for(n=200;tempototal<=duracao;n=n+200){
-					GerarVetorAleatoriamente(v,n);
+				for(n=2000;tempototal<=duracao;n=n+2000){
+				GerarVetorAleatoriamente(v,n);
+				
+					//Busca Sequencial
+				if(buscaSeq(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscaseq = tempo() - tempoinicial;
+				printf("Tempo busca sequencial: %.2lf segundos.\n",tempobuscaseq);
+					//Fim busca sequencial
+					
+				tempoinicialbin = tempo();
+				//Ordenação por bolha
 				Bolha(v,n);
-				tempocorrente = tempo();
-				tempototal = tempocorrente - tempoinicial;
+				cont++;
 				if(VerificaOrdem) printf("Vetor de %d posições está: Ordenado\n",n);
 				else printf("Vetor de %d posições: Não está ordenado.\n",n);
-				printf("O tempo total é de: %.6lf\n",tempototal);
+				//Fim ordenação por bolha
+				
+				//Busca Binária
+				if(buscaBinaria(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscabin = tempo() - tempoinicialbin;
+				printf("Tempo busca binária: %.2lf segundos.\n",tempobuscabin);
+				
+							tempocorrente = tempo();
+							tempototal = tempocorrente - tempoinicial;
+							printf("O tempo total é de: %.6lf\n\n\n",tempototal);
+				
+				if(tempobuscabin < tempobuscaseq && compensa==0) compensa = n;
 				}
+				printf("Foram ordenados %d vetores em %.2lf segundos.\n",cont,duracao);
+				if(compensa!=0)printf("\nA busca binária compensa a partir de um vetor de %d posições pelo método da bolha.\n",compensa);
 				break;
 			}	
 			case 2:{
