@@ -34,10 +34,10 @@ void Insercao(int vetor[], int n){
 		vetor[j+1] = x;
 		trocas++;
 	}
-		printf("Para ordenar esse vetor no método de insercao foram feitas %d trocas.\nVetor Ordenado por Inserção\n", trocas);
+		/* printf("Para ordenar esse vetor no método de insercao foram feitas %d trocas.\nVetor Ordenado por Inserção\n", trocas);
 		for(i=0;i<n;i++){
 			printf("Vetor[%d]= %d\n",i,vetor[i]);
-			}
+			} */
 }
 
 void Selecao(int vetor[], int n){
@@ -54,23 +54,28 @@ void Selecao(int vetor[], int n){
 	  vetor[min] = x;
 		trocas++;
    } 
-	printf("Para ordenar esse vetor no método de seleção foram feitas %d trocas.\nVetor Ordenado por Seleção\n", trocas);
+	/*printf("Para ordenar esse vetor no método de seleção foram feitas %d trocas.\nVetor Ordenado por Seleção\n", trocas);
 		for(i=0;i<n;i++){
 			printf("Vetor[%d]= %d\n",i,vetor[i]);
 			}
+			*/
 }
 
 void ShellSort(int vetor[], int n){
 	int I[10], k, i,j,incr,p,x, trocas=0;
+	/*
 	printf("\nOrdenação ShellSort\n");
 	printf("Digite o número de passos: ");
-	scanf("%d",&k);
-	for(i=0;i<k;i++){
+	scanf("%d",&k);*/
+	for(i=0,j=10;i<10;i++,j--){
+/*
 		printf("Incremento do passo %d: ",i+1);
 		scanf("%d",&I[i]);
+*/
+	I[i] = j;
 	}
 	
-	for(p=0;p<k;p++){
+	for(p=0;p<10;p++){
 		incr = I[p];
 		for(i=incr;i<n;i++){
 			x = vetor[i];
@@ -81,10 +86,10 @@ void ShellSort(int vetor[], int n){
 			trocas++;
 		}
 	}
-	printf("Para ordenar esse vetor no método de seleção foram feitas %d trocas.\nVetor Ordenado por ShellSort\n", trocas);
+  /*	printf("Para ordenar esse vetor no método de seleção foram feitas %d trocas.\nVetor Ordenado por ShellSort\n", trocas);
 		for(i=0;i<n;i++){
 			printf("Vetor[%d]= %d\n",i,vetor[i]);
-			}
+			} */
 }
 
 void quicksort(int v[], int esq, int dir){
@@ -222,30 +227,129 @@ int main(){
 				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
 				tempobuscabin = tempo() - tempoinicialbin;
 				printf("Tempo busca binária: %.2lf segundos.\n",tempobuscabin);
-				
 							tempocorrente = tempo();
 							tempototal = tempocorrente - tempoinicial;
 							printf("O tempo total é de: %.6lf\n\n\n",tempototal);
-				
 				if(tempobuscabin < tempobuscaseq && compensa==0) compensa = n;
+				//Fim busca binária
+				
 				}
 				printf("Foram ordenados %d vetores em %.2lf segundos.\n",cont,duracao);
 				if(compensa!=0)printf("\nA busca binária compensa a partir de um vetor de %d posições pelo método da bolha.\n",compensa);
 				break;
 			}	
 			case 2:{
-				printf("\nSeleção:\n");
+				tempoinicial = tempo();
+				tempototal = 0;				
+						printf("\nSeleção:\n");
+				for(n=2000;tempototal<=duracao;n=n+2000){
+				GerarVetorAleatoriamente(v,n);
+				
+					//Busca Sequencial
+				if(buscaSeq(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscaseq = tempo() - tempoinicial;
+				printf("Tempo busca sequencial: %.2lf segundos.\n",tempobuscaseq);
+					//Fim busca sequencial
+					
+				tempoinicialbin = tempo();
+				//Ordenação por SELEÇÃO
 				Selecao(v,n);
+				cont++;
+				if(VerificaOrdem) printf("Vetor de %d posições está: Ordenado\n",n);
+				else printf("Vetor de %d posições: Não está ordenado.\n",n);
+				//Fim ordenação por SELEÇÃO
+				
+				//Busca Binária
+				if(buscaBinaria(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscabin = tempo() - tempoinicialbin;
+				printf("Tempo busca binária: %.2lf segundos.\n",tempobuscabin);
+							tempocorrente = tempo();
+							tempototal = tempocorrente - tempoinicial;
+							printf("O tempo total é de: %.6lf\n\n\n",tempototal);
+				if(tempobuscabin < tempobuscaseq && compensa==0) compensa = n;
+				//Fim busca binária
+				
+				}
+				printf("Foram ordenados %d vetores em %.2lf segundos.\n",cont,duracao);
+				if(compensa!=0)printf("\nA busca binária compensa a partir de um vetor de %d posições pelo método de seleção.\n",compensa);
 				break;
 			}	
 			case 3:{
-				printf("\nInserção:\n");
+				tempoinicial = tempo();
+				tempototal = 0;				
+						printf("\nInserção:\n");
+				for(n=2000;tempototal<=duracao;n=n+2000){
+				GerarVetorAleatoriamente(v,n);
+				
+					//Busca Sequencial
+				if(buscaSeq(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscaseq = tempo() - tempoinicial;
+				printf("Tempo busca sequencial: %.2lf segundos.\n",tempobuscaseq);
+					//Fim busca sequencial
+					
+				tempoinicialbin = tempo();
+				//Ordenação por inserção
 				Insercao(v,n);
+				cont++;
+				if(VerificaOrdem) printf("Vetor de %d posições está: Ordenado\n",n);
+				else printf("Vetor de %d posições: Não está ordenado.\n",n);
+				//Fim ordenação por inserção
+				
+				//Busca Binária
+				if(buscaBinaria(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscabin = tempo() - tempoinicialbin;
+				printf("Tempo busca binária: %.2lf segundos.\n",tempobuscabin);
+							tempocorrente = tempo();
+							tempototal = tempocorrente - tempoinicial;
+							printf("O tempo total é de: %.6lf\n\n\n",tempototal);
+				if(tempobuscabin < tempobuscaseq && compensa==0) compensa = n;
+				//Fim busca binária
+				
+				}
+				printf("Foram ordenados %d vetores em %.2lf segundos.\n",cont,duracao);
+				if(compensa!=0)printf("\nA busca binária compensa a partir de um vetor de %d posições pelo método da inserção.\n",compensa);
 				break;
-			}	
-			case 4:{
-				printf("\nShell Sort:\n");
+			}
+			case 4:{ 			//Não sei como colocar o número de passos e os incrementos, então atribui 10 passos com incrementos começando em 10 e diminuindo até 1
+				tempoinicial = tempo();
+				tempototal = 0;				
+						printf("\nShellSort:\n");
+				for(n=2000;tempototal<=duracao;n=n+2000){
+				GerarVetorAleatoriamente(v,n);
+				
+					//Busca Sequencial
+				if(buscaSeq(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscaseq = tempo() - tempoinicial;
+				printf("Tempo busca sequencial: %.2lf segundos.\n",tempobuscaseq);
+					//Fim busca sequencial
+					
+				tempoinicialbin = tempo();
+				//Ordenação por ShellSort
 				ShellSort(v,n);
+				cont++;
+				if(VerificaOrdem) printf("Vetor de %d posições está: Ordenado\n",n);
+				else printf("Vetor de %d posições: Não está ordenado.\n",n);
+				//Fim ordenação por ShellSort
+				
+				//Busca Binária
+				if(buscaBinaria(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscabin = tempo() - tempoinicialbin;
+				printf("Tempo busca binária: %.2lf segundos.\n",tempobuscabin);
+							tempocorrente = tempo();
+							tempototal = tempocorrente - tempoinicial;
+							printf("O tempo total é de: %.6lf\n\n\n",tempototal);
+				if(tempobuscabin < tempobuscaseq && compensa==0) compensa = n;
+				//Fim busca binária
+				
+				}
+				printf("Foram ordenados %d vetores em %.2lf segundos.\n",cont,duracao);
+				if(compensa!=0)printf("\nA busca binária compensa a partir de um vetor de %d posições pelo método do ShellSort.\n",compensa);
 				break;
 			}	
 		/*	case 5:{
@@ -254,10 +358,41 @@ int main(){
 				break;
 			}	*/
 			case 6:{
-				printf("\nQuicksort:\n");
-				esq = 0;
-				dir = n-1;
+				tempoinicial = tempo();
+				tempototal = 0;				
+						printf("\nQuicksort:\n");
+				for(n=2000;tempototal<=duracao;n=n+2000){
+				GerarVetorAleatoriamente(v,n);
+				
+					//Busca Sequencial
+				if(buscaSeq(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscaseq = tempo() - tempoinicial;
+				printf("Tempo busca sequencial: %.2lf segundos.\n",tempobuscaseq);
+					//Fim busca sequencial
+					
+				tempoinicialbin = tempo();
+				//Ordenação por quicksort
 				quicksort(v,esq,dir);
+				cont++;
+				if(VerificaOrdem) printf("Vetor de %d posições está: Ordenado\n",n);
+				else printf("Vetor de %d posições: Não está ordenado.\n",n);
+				//Fim ordenação por quicksort
+				
+				//Busca Binária
+				if(buscaBinaria(v,numero,n)!=-1)printf("O número %.2f foi encontrado no vetor.\n",numero);
+				else printf("O número %.2f não foi encontrado no vetor.\n",numero);
+				tempobuscabin = tempo() - tempoinicialbin;
+				printf("Tempo busca binária: %.2lf segundos.\n",tempobuscabin);
+							tempocorrente = tempo();
+							tempototal = tempocorrente - tempoinicial;
+							printf("O tempo total é de: %.6lf\n\n\n",tempototal);
+				if(tempobuscabin < tempobuscaseq && compensa==0) compensa = n;
+				//Fim busca binária
+				
+				}
+				printf("Foram ordenados %d vetores em %.2lf segundos.\n",cont,duracao);
+				if(compensa!=0)printf("\nA busca binária compensa a partir de um vetor de %d posições pelo método do quicksort.\n",compensa);
 				break;
 			}
 			case 7:{
