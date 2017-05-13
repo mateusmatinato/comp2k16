@@ -1,0 +1,37 @@
+/************************
+Nome: Mateus G. Matinato
+Data: 23/11/2016
+Lista 4 - Exercício 3
+************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int maiorvetor(int *v, int n){
+	int maior;
+	if(n==1) return v[0];
+	//Ele separa o vetor em duas partes e compara com o ultimo elemento do vetor até chegar no primeiro elemento
+	else{
+		maior = maiorvetor(v,n-1);
+		if(maior>v[n-1]) return maior;
+		else return v[n-1];
+	}
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int n,i;
+	printf("Digite o número de elementos do vetor: ");
+	scanf("%d", &n);
+	int v[n];
+	
+	printf("Insira o vetor A\n");
+	for(i=0;i<n;i++){
+		printf("v[%d]= ",i);
+		scanf("%d",&v[i]);
+	}
+	
+	printf("O maior elemento do vetor é: %d.\n", maiorvetor(v,n));	
+	
+}
