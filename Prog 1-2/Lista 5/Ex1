@@ -1,0 +1,12 @@
+  void armazena(char nomes[][7]){
+	int i,j;
+	for(i=0;i<12;i++){
+		printf("Digite o %dº nome: ", i+1);
+		scanf("%s", nomes[i]);
+	
+	}
+	for(j=0;j<12;j++){
+		printf("%s ", nomes[j]);
+		printf("\n");
+	}
+}
