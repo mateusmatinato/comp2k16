@@ -1,0 +1,71 @@
+/* Mateus Matinato */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main(){
+	setlocale(LC_ALL,"Portuguese");
+    float x;
+    int exp = 0;
+    int exp1[8];
+    printf("Digite o número a ser convertido: ");
+    scanf("%f",&x);
+    if(x>=0) printf("0");
+    else{
+		printf("1");
+		x = x - 2*x;
+	}
+	
+	//Expoente
+    if(x==1){
+    	exp = 0;
+	}
+	else if(x>1){
+      while(x>=2){
+      x = x/2;
+      exp++;
+      }
+   }
+   else if (x<1 && x!=0){
+    while(x<1){
+      x = x*2;
+      exp--;
+      }
+   }
+   else if(x==0){
+   	 exp = -127;
+   }	
+      exp = exp + 127;   //Excesso 127
+      int i,j; 
+      j=7;
+      for(i = 0; i<8 ; i++){
+	       exp1[j] = exp % 2;
+	        exp = exp/2;
+        	j--; //Como a conversão para binário deve ser impressa ao contrário, armazena primeiro na posição 7 e vai diminuindo.
+      }
+      
+      for(i=0;i<8;i++){
+	      printf("%d",exp1[i]); //Printa o expoente em binário
+      }
+    
+    //Mantissa  
+      if(x>=1) x = x - ((int) (x));   //Se o x>1 pega somente a parte fracionária.
+      int cont = 0;   //Contador para verificar se preencheu os 23 bits
+	while(x != 0 || cont<23){  
+	  x = x * 2;   
+	  int y; 
+	  y = (int) (x);  //Mostra a parte inteira do valor de X, se X = 1,5 / Y = 1;
+	  printf("%d",y);
+	  cont++;
+	  if(x>=1) x = x - ((int)(x));   //Se o x>1 pega somente a parte fracionária.
+	  }
+	  while(cont!=23){  //Preenche os bits caso tenha chego a 0
+	  	printf("0");
+	  	cont++;
+	  }
+	  printf("\n");   
+	  system("pause");
+	  return 0;
+}
+	//ABRAAASSS SANDERO E JHON
