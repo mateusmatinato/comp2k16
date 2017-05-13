@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 
 public class Motorista {
     private String cnh;
-    Data data = new Data();
+    Data data = new Data(); //data de admissão
     private String nome;
 Scanner input = new Scanner(System.in);
     
@@ -15,19 +15,19 @@ Scanner input = new Scanner(System.in);
         this.nome = nome;        
     }
     
-    public void setCnh(){
+    public void setCnh(){ //seta a cnh do motorista
         input.nextLine();
         System.out.print("Digite a CNH: ");
         this.cnh = input.nextLine();
     }
     
-    public void setNome(){
+    public void setNome(){ //seta o nome do motorista
         input.nextLine();
         System.out.print("Digite o nome: ");
         this.nome = input.nextLine();
     }
     
-    public void dAdm(){
+    public void dAdm(){ //verifica e atribui o dia de admissão
         int dia = 0;
         int v = 0;
         while(v==0){
@@ -42,7 +42,7 @@ Scanner input = new Scanner(System.in);
         data.setDia(dia);        
     }
     
-    public void mAdm(){
+    public void mAdm(){//verifica e atribui o mes de admissão
         Scanner input = new Scanner(System.in);
         int mes = 0;
         int v = 0;
@@ -58,7 +58,7 @@ Scanner input = new Scanner(System.in);
         data.setMes(mes);        
     }
     
-    public void aAdm(){
+    public void aAdm(){//verifica e atribui o ano de admissão
         Scanner input = new Scanner(System.in);
         int ano = 0;
         int v = 0;
@@ -74,29 +74,29 @@ Scanner input = new Scanner(System.in);
         data.setAno(ano);        
     }
     
-    public void calculaTempo(){
+    public void calculaTempo(){ //calcula o tempo de admissão do motorista na empresa
         int dia, mes, ano, diaA, mesA, anoA, tempoA, tempoM;
-        dia = data.getDia();
-        mes = data.getMes();
-        ano = data.getAno();
+        dia = data.getDia(); //pega o dia de admissao
+        mes = data.getMes(); //pega o mes de admissao
+        ano = data.getAno(); //pega o ano de admissao
         
         /* Funções para obter a data atual e atribuir em variáveis
         diferentes e convertendo para inteiro
         */
         Date data = new Date(System.currentTimeMillis());  
-        SimpleDateFormat diaAtual = new SimpleDateFormat("dd");  
-        diaA = Integer.parseInt(diaAtual.format(data));                                    
-        SimpleDateFormat mesAtual = new SimpleDateFormat("MM"); 
-        mesA = Integer.parseInt(mesAtual.format(data));
-        SimpleDateFormat anoAtual = new SimpleDateFormat("yyyy"); 
-        anoA = Integer.parseInt(anoAtual.format(data));
+        SimpleDateFormat diaAtual = new SimpleDateFormat("dd");  //pega o dia do sistema 
+        diaA = Integer.parseInt(diaAtual.format(data));          //converte o dia para inteiro                           
+        SimpleDateFormat mesAtual = new SimpleDateFormat("MM");  //pega o mes do sistema
+        mesA = Integer.parseInt(mesAtual.format(data));          //converte o mes para inteiro
+        SimpleDateFormat anoAtual = new SimpleDateFormat("yyyy");//pega o ano do sistema
+        anoA = Integer.parseInt(anoAtual.format(data));          //converte o ano para inteiro
 
         //Função para calcular o tempo de admissão
         tempoA = tempoM = 0;
-         tempoA = anoA - ano;
+         if(anoA>ano) tempoA = anoA - ano; //se o ano atual for maior, o tempo em anos é atual - ano
          if(mesA < mes){ 
              tempoA--;
-             tempoM = 12 - (mes-mesA);
+             tempoM = 12 - (mes-mesA); 
          }
          else if (mesA > mes){
             tempoM = mesA - mes;
@@ -105,7 +105,7 @@ Scanner input = new Scanner(System.in);
          
     }
     
-    public void mostraMotorista(){
+    public void mostraMotorista(){ //Mostra o motorista
         System.out.println("Nome do Motorista: "+this.nome);
         System.out.println("CNH: "+this.cnh);
         System.out.println("Data de admissão: "+this.data.getDia()+"/"+this.data.getMes()+"/"+this.data.getAno());

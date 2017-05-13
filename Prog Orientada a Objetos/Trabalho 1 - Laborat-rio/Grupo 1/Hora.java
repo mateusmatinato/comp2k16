@@ -5,7 +5,7 @@ public class Hora {
     private int hora,min;
 
 
-    public int validaHora(int hora){
+    public int validaHora(int hora){ //validação de hora
         if(hora > 23 || hora<0) return 0;
         else{
             this.hora = hora;
@@ -13,7 +13,7 @@ public class Hora {
         }
     }
     
-    public int validaMinuto(int min){
+    public int validaMinuto(int min){ //validação de minutos
         if(min < 0 || min>59){
             return 0;
         }
@@ -23,15 +23,15 @@ public class Hora {
         }
     }
     
-    public void setHora(int hora){
+    public void setHora(int hora){ //seta hora
         this.hora = hora;
     }
     
-    public void setMin(int min){
+    public void setMin(int min){ //seta minuto
         this.min = min;
     }
     
-    public int getHora(){
+    public int getHora(){ 
         return this.hora; 
     }
     

@@ -8,10 +8,10 @@ public class Passageiro {
     private String bairro;
     private String cidade;
     private int num;
-    Data data=new Data();
+    Data data=new Data(); //data de nascimento
     Scanner input = new Scanner(System.in);
     
-    public Passageiro(String nome, String rg, String prof, String rua, String bairro, String cidade, int num){
+    public Passageiro(String nome, String rg, String prof, String rua, String bairro, String cidade, int num){ //construtor
         this.nome = nome;
         this.rg = rg;
         this.prof = prof;
@@ -21,25 +21,25 @@ public class Passageiro {
         this.num = num;    
     }
     
-    public void setNome(){
+    public void setNome(){ //seta o nome do passageiro
         input.nextLine();
         System.out.print("Qual o nome: ");
         this.nome = input.nextLine();
     }
     
-    public void setRG(){
+    public void setRG(){ //seta o rg do passageiro
         input.nextLine();
         System.out.print("Qual o RG: ");
         this.rg = input.nextLine();
     }
     
-    public void setProf(){
+    public void setProf(){ //seta a profissão do passageiro
         input.nextLine();
         System.out.print("Qual a profissão: ");
         this.prof = input.nextLine();
     }
     
-    public void setEnd(){
+    public void setEnd(){ //seta o endereço do passageiro
         input.nextLine();
         System.out.print("Qual a rua: ");
         this.rua = input.nextLine();
@@ -52,14 +52,14 @@ public class Passageiro {
         input.nextLine();
     }
     
-    public void dNasc(){
+    public void dNasc(){ //verifica e atribui o dia de nascimento
         Scanner input = new Scanner(System.in);
         int dia = 0;
         int v = 0;
         while(v==0){
         System.out.print("Digite o dia de nascimento: ");
         dia = input.nextInt();
-        if(data.validaDia(dia) == 1) v = 1;
+        if(data.validaDia(dia) == 1) v = 1; //verifica se o dia é valido
             else if (data.validaDia(dia) == 0){
                 v = 0;
                 System.out.println("Dia inválido, insira novamente.");
@@ -68,14 +68,14 @@ public class Passageiro {
         data.setDia(dia);        
     }
     
-    public void mNasc(){
+    public void mNasc(){ //verifica e atribui o mes de nascimento
         Scanner input = new Scanner(System.in);
         int mes = 0;
         int v = 0;
         while(v==0){
         System.out.print("Digite o mês de nascimento: ");
         mes = input.nextInt();
-        if(data.validaMes(mes) == 1) v = 1;
+        if(data.validaMes(mes) == 1) v = 1; //verifica se o mes é valido
             else if (data.validaMes(mes) == 0){
                 v = 0;
                 System.out.println("Mês inválido, insira novamente.");
@@ -84,14 +84,14 @@ public class Passageiro {
         data.setMes(mes);        
     }
     
-    public void aNasc(){
+    public void aNasc(){ //verifica e atribui o ano de nascimento
         Scanner input = new Scanner(System.in);
         int ano = 0;
         int v = 0;
         while(v==0){
-        System.out.print("Digite o ano de nascimento: ");
+        System.out.print("Digite o ano de nascimento: "); 
         ano = input.nextInt();
-        if(data.validaAno(ano) == 1) v = 1;
+        if(data.validaAno(ano) == 1) v = 1;//verifica se o ano é valido
             else if (data.validaAno(ano) == 0){
                 v = 0;
                 System.out.println("Ano inválido, insira novamente.");
@@ -100,22 +100,13 @@ public class Passageiro {
         data.setAno(ano);        
     }
     
-    public void mostraPassageiro(){
+    public void mostraPassageiro(){ //mostra os dados do passageiro
         System.out.println("Nome: "+this.nome);
         System.out.println("RG: "+this.rg);
         System.out.println("Profissão: "+this.prof);
         System.out.println("Rua: "+this.rua+" Bairro:"+this.bairro+" Número: "+this.num);
         System.out.println("Cidade: "+this.cidade);
         System.out.println("Data de Nascimento: "+this.data.getDia()+"/"+this.data.getMes()+"/"+this.data.getAno());
-    }
-    
-    public int verificaPassageiro(){
-        if(((this.nome).equals("") || (this.nome).equals(" ") || (this.nome).equals("\n")) 
-                && ((this.rg).equals("") || (this.rg).equals(" ") || (this.rg).equals("\n"))){
-            return 0;
-        }
-        else return 1;
-    }
-    
+    }  
     
 }
