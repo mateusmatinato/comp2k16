@@ -1,0 +1,30 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <limits.h>
+
+int VerificaOrdem(int vetor[], int n){
+	int i, ordenado=1;
+	for(i=0;i<n-1 && ordenado==1;i++){
+		if(vetor[i]<vetor[i+1]) ordenado = 1;
+		else ordenado = 0;
+	}
+	return ordenado;
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int vetor[100],i, n;
+	printf("Quantos elementos haverá no vetor: ");
+	scanf("%d",&n);
+	printf("Digite o vetor\n");
+	for(i=0;i<n;i++){
+		printf("v[%d]= ",i);
+		scanf("%d",&vetor[i]);
+	}
+	if(VerificaOrdem(vetor,n)==0) printf("Esse vetor não está ordenado.\n");
+	else printf("Esse vetor está ordenado.\n");  
+	system("pause");
+	return 0;
+}
