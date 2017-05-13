@@ -1,0 +1,10 @@
+void remove_caractere(char *texto, int pos, int n){
+	int tam,i,j;
+		tam = strlen(texto);
+		i = pos + n - 1;
+		for(j = i ; j<=tam ; j++){
+			texto[j-n] = texto[j];
+		}
+	printf("A string nova é: %s", texto);
+	
+}
