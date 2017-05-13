@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void cifrar(int chave,char *texto){
+	printf("Digite o texto a ser criptografado:\n");
+	fflush(stdin);
+	scanf("%[^\n]",texto);
+	printf("Digite a chave (1 a 25) para criptografar: ");
+	scanf("%d",&chave);
+
+	if(chave<1 || chave>25){ 		//Verifica se a chave é valida
+		printf("Chave invalida.");
+		return;
+	}
+	
+	int i, tam, j;
+	tam = strlen(texto);
+	for(i=0;i<tam;i++){
+		if(texto[i]!=' '){ //Se for um espaço não deverá mudar
+			j = texto[i]+chave; //Guarda o valor do caractere na ASCII e soma com a chave
+			texto[i] = j; //Muda o caractere
+		}
+	}
+		printf("O texto criptografado na chave %d é:\n%s\n",chave,texto);
+}
+
+void decifrar(int chave, char *texto){
+	printf("Digite o texto a ser descriptografado:\n");
+	fflush(stdin);
+	scanf("%[^\n]",texto);
+	printf("Digite a chave (1 a 25) para descriptografar: ");
+	scanf("%d",&chave);
+
+	if(chave<1 || chave>25){			//Verifica se a chave é valida
+		printf("Chave invalida.");
+		return;
+	}
+	
+	int i, tam, j;
+	tam = strlen(texto);
+	for(i=0;i<tam;i++){
+		if(texto[i]!=' '){ 		//Se for espaço não é necessário mudar
+			j = texto[i]-chave; //Armazena em hex o valor do caractere menos a chave
+			texto[i] = j;		//Muda o valor do caractere
+		}
+	}
+		printf("O texto descriptografado na chave %d é:\n%s\n",chave,texto);
+}
+
+int main(){
+	setlocale(LC_ALL,"Portuguese");
+	int chave,opcao;
+	char texto[400];
+	printf("Você deseja cifrar(1) ou decifar(2)?: ");
+	scanf("%d",&opcao);
+	switch(opcao){
+		case 1: cifrar(chave,texto); break;
+		case 2: decifrar(chave,texto); break;
+	}
+system("pause");
+return 0;
+}
