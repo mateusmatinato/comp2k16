@@ -1,0 +1,102 @@
+package aula.labpoo;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AulaLabPOO {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int isbn;
+        String titulo;
+        int numAutores;
+        String editora;
+        int anoPublicacao;
+        int numPags;
+        int opcao = 1;
+        
+        ArrayList<Livro> livros = new ArrayList<>();
+        
+        while(opcao != 0){
+            System.out.println();
+            System.out.println("|==============================|");
+            System.out.println("|          Biblioteca          |");
+            System.out.println("|------------------------------|");
+            System.out.println("|  Criar Livro     (1)         |");
+            System.out.println("|  Remover Livro   (2)         |");
+            System.out.println("|  Alterar Livro   (3)         |");
+            System.out.println("|  Exibir Coleção  (4)         |");
+            System.out.println("|  Sair            (0)         |");
+            System.out.println("|==============================|");
+            System.out.print("Digite a opção -> ");
+            opcao = input.nextInt();
+            input.nextLine();
+            
+            switch(opcao){
+                case 1:{
+                    //Inserir Livro
+                    System.out.println();
+                    System.out.print("Digite o ISBN do Livro: ");
+                    isbn = input.nextInt();
+                    input.nextLine();
+                    System.out.print("Digite o título do Livro: ");
+                    titulo = input.nextLine();
+                    System.out.print("Digite o nome da Editora: ");
+                    editora = input.nextLine();
+                    System.out.print("Digite o ano de Publicação: ");
+                    anoPublicacao = input.nextInt();
+                    System.out.print("Digite o número de páginas: ");
+                    numPags = input.nextInt();
+                    input.nextLine();
+                    System.out.print("Digite o número de autores: ");
+                    numAutores = input.nextInt();
+                    Livro livro = new Livro(isbn,titulo,editora,anoPublicacao,numPags);
+                    livro.setAutores(numAutores);
+                    livros.add(livro);
+                    break;
+                }
+                case 2:{
+                    //Remover Livro
+                    int isbndigitado, removeu = 0;
+                    System.out.print("Digite o ISBN do livro a ser Removido: ");
+                    isbndigitado = input.nextInt();
+                    for(int i=0 ; i<livros.size() ; i++){
+                        Livro livro = livros.get(i);
+                        if(livro.getIsbn() == isbndigitado){
+                            livros.remove(i);
+                            System.out.println("O livro: "+livro.getTitulo()+" foi removido.");
+                            removeu = 1;
+                        }
+                    }
+                    if(removeu == 0) System.out.println("Esse livro não foi encontrado.");
+                    break;
+                }
+                case 3:{
+                    //Alterar Livros
+                    int isbndigitado,i;
+                    System.out.print("Digite o ISBN do livro a ser alterado: ");
+                    isbndigitado = input.nextInt();
+                    for(i =0 ; i<livros.size(); i++){
+                        Livro livro = livros.get(i);
+                        if(livro.getIsbn() == isbndigitado){
+                            livro.MostrarLivro();
+                            livro.MenuAlterar();
+                        }
+                    }
+                    if(i == livros.size()) System.out.println("Livro não encontrado.");
+                    break;
+                }
+                case 4:{
+                    //Exibir Coleção
+                    int i;
+                    for(i=0; i<livros.size(); i++){
+                        System.out.println();
+                        Livro livro = livros.get(i);
+                        System.out.println("Livro "+(i+1));
+                        livro.MostrarLivro();                       
+                    }
+                    if(livros.size() == 0) System.out.println("Coleção vazia");
+                    break;
+                }
+            }
+        }        
+    }
+}
