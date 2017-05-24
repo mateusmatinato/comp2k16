@@ -39,6 +39,7 @@ NODP *insereInicioDupla(NODP *lista, int valor){
 		lista = novo;
 		return lista;
 	}
+	lista->ant = novo;
 	novo->ant = NULL;
 	novo->prox = lista;
 	lista = novo;
@@ -146,7 +147,7 @@ NODP *removeDupla (NODP *lista, int valor){
 	aux2->prox = aux->prox;
 	aux = aux->prox;
 	aux->ant = aux2;
-		return lista;
+	return lista;
 }
 
 //Implementação de Pilha
