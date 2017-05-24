@@ -67,13 +67,14 @@ NODP *insereFimDupla(NODP *lista, int valor){
 }
 
 //Insere no Meio da Lista Duplamente Encadeada
-NODP *insereMeioDupla(NODP *lista, int valor){ //ARRUMAR
+NODP *insereMeioDupla(NODP *lista, int valor){
 	NODP *aux = lista;
 	NODP *novo = (NODP*)malloc(sizeof(NODP));
 	novo->info = valor;
 	
 	if(aux==NULL){ //Lista com nenhum elemento
 		novo->prox = NULL;
+		novo->ant = NULL;
 		lista = novo;
 		return lista;
 	}
@@ -111,22 +112,40 @@ NODP *insereMeioDupla(NODP *lista, int valor){ //ARRUMAR
 }
 
 //Remove um Elemento da Lista Duplamente Encadeada
-NODP *removeDupla (NODP *lista, int valor){ //ARRUMAR
+NODP *removeDupla (NODP *lista, int valor){ 
 	NODP *aux;
 	aux = lista;
 	if(lista==NULL){
 		printf("Lista vazia.\n");
 		return lista;
 	}
+	
 	while(aux->prox != NULL && aux->info != valor){
 		//Percorre a lista até encontrar o valor ou até o ultimo elemento
 		aux = aux->prox;
 	}
-	
+	if(aux->info != valor){ //Caso não remova nenhum
+		return lista;
+	}
+	if(aux->ant == NULL && aux->prox != NULL){ //Caso remova o primeiro em lista com mais de 1 elemento
+		aux = aux->prox;
+		aux->ant = NULL;
+		return aux;
+	}
+	if(aux->ant == NULL && aux->prox == NULL){ //Caso remova o primeiro em lista com 1 elemento
+		lista = NULL;
+		return lista;
+	}
+	if(aux->ant != NULL && aux->prox == NULL){ //Caso remova o ultimo
+		aux = aux->ant;
+		aux->prox = NULL;
+		return lista;
+	}
+	 //Caso geral 
 	NODP *aux2 = aux->ant;
 	aux2->prox = aux->prox;
-	free(aux);
-	
+	aux = aux->prox;
+	aux->ant = aux2;
 		return lista;
 }
 
