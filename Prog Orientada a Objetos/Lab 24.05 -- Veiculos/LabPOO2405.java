@@ -9,6 +9,5 @@ public class LabPOO2405{
     c1.mostraCaminhao();
     System.out.println();
     cp1.mostraCarro();
-    }
-    
+    }   
 }
