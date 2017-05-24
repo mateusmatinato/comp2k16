@@ -1,0 +1,6 @@
+
+package labpoo2405;
+
+public enum marca {
+    FORD, FIAT, CHEVROLET, FERRARI, LAMBORGHINI, CHRYSLER, VOLKSWAGEN, SUZUKI, YAHAMA, SCANIA
+}
