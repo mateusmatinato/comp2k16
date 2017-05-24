@@ -349,27 +349,32 @@ void imprimeCircular(NODE *lista){
 //Remove um elemento da lista circular
 NODE *removeCircular(NODE *lista, int valor){ 
 	NODE *aux, *ant;
+	if(lista == NULL){  //Verifica se a lista está vazia
+		printf("Lista vazia.\n");
+		return NULL;
+	}
 	ant = lista;
 	aux = lista->prox;
-	if(lista->prox == lista){
-		if(lista->info == valor){
-		 	lista = NULL;
-		 	return lista;
+	if(lista->prox == lista){ //Caso tenha 1 elemento
+		if(lista->info == valor){ 
+		 	return NULL;
 		 }	
 		else return lista;
 	}
-	if(ant->info == valor){
-		while(aux->prox != ant) aux = aux->prox;
+	
+	if(ant->info == valor){ //Caso o primeiro elemento for o desejado pra remoção
+		while(aux->prox != ant) aux = aux->prox;  //Percorre o aux até o ultimo(antes de ligar no inicio)
 		aux->prox = ant->prox;
 		free(ant);
 		aux = aux->prox;
 		return aux;
 	}
-	while(aux->info != valor && aux->prox!=lista){
+	while(aux->info != valor && aux->prox!=lista){ //Percorre a lista
 		aux = aux->prox;
 		ant = ant->prox;
 	}
-	ant->prox = aux->prox;
+	//Caso geral
+	ant->prox = aux->prox; 
 	free(aux);
 	return lista;
 }
