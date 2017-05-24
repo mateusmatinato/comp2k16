@@ -40,6 +40,13 @@ void main(){
 	imprime_arvPreOrdem(n5);
 	printf("\n");
 	
+	int num;
+	printf("Digite o número a ser buscado: ");
+	scanf("%d",&num);
+	if(pertence(n5,num))printf("O número %d pertence a árvore.\n",num);
+	else printf("O número %d não pertence a árvore.\n", num);
+	
+	
 }
 
 
