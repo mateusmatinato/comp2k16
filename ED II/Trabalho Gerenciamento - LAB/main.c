@@ -1,14 +1,14 @@
 /************************************************************************|
 |  Simulação de Escalonamento de Processos com Gerenciamento de Memória  |
-|   -------------------------                                            |
-|		| Integrantes:			  	|									                           |
-|		|		João Marcos Rosa  	|									                           |
-|		|		Jonatan Rodrigues	  |									                           |
-|		|		Mateus Matinato		  |									                           |
-|		|		Vinicius de Freitas	|					                          				 |
-|   -------------------------                                            |
+|   |---------------------------|                                        |
+|   | Integrantes:		|    		 	                 |
+|   | João Marcos Rosa  	|			                 |
+|   | Jonatan Rodrigues	        |			                 |
+|   | Mateus Matinato           |			                 |
+|   | Vinicius de Freitas	|			          	 |
+|   |---------------------------|					 |
 |     Disciplina: laboratório de Estrutura de Dados II                   |
-|     Professor: Leandro Neves			Data: 12/09/2017				             |
+|     Professor: Leandro Neves			Data: 12/09/2017	 |
 |************************************************************************/
 
 
