@@ -221,14 +221,16 @@ void main(){
 			word = 2;
 			tag = 32 - set - 2;
 		}
-		fflush(stdin);
-		char end[8];
-		printf("Digite um endereço em hexadecimal de 32 bits: ");
-		scanf("%[^\n]",end);
-		char *endbin = transforma(end);
-		printf("\nEndereço inserido:\n%s\n",end);
-		printf("\nEndereço em Binário é:\n%s\n\n",endbin);
-		
+		if(opc != 0){
+			fflush(stdin);
+			char end[8];
+			printf("Digite um endereço em hexadecimal de 32 bits: ");
+			scanf("%[^\n]",end);
+			char *endbin = transforma(end);
+			printf("\nEndereço inserido:\n%s\n",end);
+			printf("\nEndereço em Binário é:\n%s\n\n",endbin);
 		formata(endbin,tag,set,word);
+		}
 	}
+	if(opc == 0) printf("\n\n\n\t\t\tFim do Programa!\n\n\n");
 }
