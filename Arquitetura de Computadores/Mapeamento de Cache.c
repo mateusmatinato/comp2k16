@@ -209,7 +209,7 @@ void main(){
 			set = 11;
 			word = 2;
 		}
-		else{
+		else if(opc == 2){
 			printf("Digite o número de conjuntos(potencias de 2): ");
 			scanf("%d",&set);
 			int cont = 0;
