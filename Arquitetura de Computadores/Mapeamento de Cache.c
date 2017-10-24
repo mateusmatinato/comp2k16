@@ -131,8 +131,8 @@ char *transforma(char *end){
 
 void formata(char *endreal, int tag, int set, int word){
 	int i;
-	char *tag1 = (char*)malloc(word*sizeof(char));
-	char *set1 = (char*)malloc(word*sizeof(char));
+	char *tag1 = (char*)malloc(tag*sizeof(char));
+	char *set1 = (char*)malloc(set*sizeof(char));
 	char *word1 = (char*)malloc(word*sizeof(char));
 	int j;		
 	j = 0;
