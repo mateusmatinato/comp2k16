@@ -14,6 +14,8 @@
 #include <locale.h>
 #include <math.h>
 
+//xd
+
 char *transforma(char *end){
 	char *endreal = (char*)malloc(32*sizeof(char)); 
 	int i;
