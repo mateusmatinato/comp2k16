@@ -2,12 +2,6 @@
 |     Nome: Mateus Matinato                                     |
 |     Data: 19/10/2017   Hora: 23:32                            |
 |---------------------------------------------------------------|
-|  ATENÇÃO: Caso for copiar esse código, tenha a decência de    |
-|  adaptá-lo a fim de não me foder, se foder e nos foder...     |
-|  ATENÇÃO 2: Esse código está uma gambiarra monstrissima, mas  |
-|  parece estar funcionando, então não deve ser questionado, é  |
-| um axioma computacional, aceite.                              |
-|---------------------------------------------------------------|
 | FUNCIONAMENTO: Esse programa recebe um valor em hexa e chama  |
 | a função transforma que retorna uma string do valor converti- |
 | do pra binário, após isso é chamada a função formata que mos- |
