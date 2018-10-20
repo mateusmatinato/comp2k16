@@ -1,11 +1,11 @@
 /*********************************
 Trabalho de Estrutura de Dados I
-Sistema de AdivinhaÁ„o com ABB
+Sistema de Adivinha√ß√£o com ABB
 Integrantes:	Mateus Matinato
-				Jo„o Marcos Rosa
+				Jo√£o Marcos Rosa
 				Jonatan Rodrigues
 Data: 12/07/2017
-Professor: Matheus GonÁalves
+Professor: Matheus Gon√ßalves
 **********************************/
 
 #include <stdio.h>
@@ -25,19 +25,19 @@ Arv *cria_abb_vazia(){
 }
 
 Arv *readArvore(FILE *arq){
-	//Essa funÁ„o lÍ a arvore do arquivo txt
+	//Essa fun√ß√£o l√™ a arvore do arquivo txt
   char info[100];
   int isFolha = 0;
   
-  fscanf(arq, "%[^;];%i;\n", info, &isFolha); //LÍ a string atÈ o ; e o indice
-  Arv* raiz = (Arv*)malloc(sizeof(Arv)); //Aloca o novo nÛ que ser· inserido
-  strcpy(raiz->info, info); //Copia a string no nÛ
+  fscanf(arq, "%[^;];%i;\n", info, &isFolha); //L√™ a string at√© o ; e o indice
+  Arv* raiz = (Arv*)malloc(sizeof(Arv)); //Aloca o novo n√≥ que ser√° inserido
+  strcpy(raiz->info, info); //Copia a string no n√≥
   
-	if(isFolha == 0) raiz->esq = readArvore(arq); //Caso ela n„o for folha, chama a funÁ„o para a arvore esquerda
-	else raiz->esq = NULL; //Se n„o atribui NULL
+	if(isFolha == 0) raiz->esq = readArvore(arq); //Caso ela n√£o for folha, chama a fun√ß√£o para a arvore esquerda
+	else raiz->esq = NULL; //Se n√£o atribui NULL
 	
-	if(isFolha == 0) raiz->dir = readArvore(arq); //Caso ela n„o for folha, chama a funÁ„o para a arvore direita
-	else raiz->dir = NULL; //Se n„o atribui NULL;
+	if(isFolha == 0) raiz->dir = readArvore(arq); //Caso ela n√£o for folha, chama a fun√ß√£o para a arvore direita
+	else raiz->dir = NULL; //Se n√£o atribui NULL;
 
   return raiz;
 }
@@ -52,9 +52,9 @@ void imprime_abb(Arv *a){
 }
 
 void writeArvore (Arv *a, FILE *arq){
-	//Essa funÁ„o escreve no arquivo os nÛs da arvore
+	//Essa fun√ß√£o escreve no arquivo os n√≥s da arvore
 	int i = 0;
-	if(isFolha(a)) i = 1; //Caso o nÛ for folha atribui i = 1
+	if(isFolha(a)) i = 1; //Caso o n√≥ for folha atribui i = 1
 	fprintf(arq,"%s;%i;\n",a->info,i); //Escreve no arquivo no formato: STRING;INDICE;
 		if(a->esq)writeArvore(a->esq,arq); 
 		if(a->dir)writeArvore(a->dir,arq);
@@ -62,7 +62,7 @@ void writeArvore (Arv *a, FILE *arq){
 
 
 Arv *insere_abb(Arv *a, char info[]){
-	//FunÁ„o que insere na arvore
+	//Fun√ß√£o que insere na arvore
 	if(a == NULL){
 		a = (Arv*)malloc(sizeof(Arv));
 		strcpy(a->info,info);
@@ -72,7 +72,7 @@ Arv *insere_abb(Arv *a, char info[]){
 
 
 int isFolha(Arv *a){
-	//Essa funÁ„o retorna 1 caso o nÛ for folha e 0 caso n„o for
+	//Essa fun√ß√£o retorna 1 caso o n√≥ for folha e 0 caso n√£o for
 	if(a->dir == NULL && a->esq == NULL){
 		return 1;
 	}
@@ -101,12 +101,12 @@ void main(){
 	printf("\t|   Iniciar Jogo      (1)      |\n");
 	printf("\t|   Finalizar         (0)      |\n");
 	printf("\t|==============================|\n");
-	printf("\tDigite sua opÁ„o -> ");
+	printf("\tDigite sua op√ß√£o -> ");
 	scanf("%d",&opcao);
 	system("cls");
 	
 //	Arv *a = cria_abb_vazia();
-//	a = insere_abb(a,"Esse time È brasileiro? ");
+//	a = insere_abb(a,"Esse time √© brasileiro? ");
 //	a->esq = insere_abb(a->esq,"Palmeiras");
 //	a->dir = insere_abb(a->dir,"Barcelona");
 
@@ -115,32 +115,32 @@ void main(){
 		Arv *noatual = a;
 		printf("\nPense em um time...\n");
 		while(acabou == 0){
-			//Enquanto n„o acertar
+			//Enquanto n√£o acertar
 			printf("\n%s (SIM/NAO): ",noatual->info);
 			scanf("%s",resposta);
 			if(stricmp(resposta,"Sim")==0){
 				//Caso a resposta for sim
 				noatual = noatual->esq;
 			}
-			else noatual = noatual->dir; //Caso for n„o
+			else noatual = noatual->dir; //Caso for n√£o
 		
 			if(isFolha(noatual)){
-				//Caso o nÛ atual seja uma folha
-				printf("\nVocÍ pensou no %s! Acertei (SIM/NAO)? ",noatual->info);
+				//Caso o n√≥ atual seja uma folha
+				printf("\nVoc√™ pensou no %s! Acertei (SIM/NAO)? ",noatual->info);
 				scanf("%s",resposta);
 				fflush(stdin);
 				if(stricmp(resposta,"Sim")==0){
-					//Caso seja um nÛ folha e a resposta for sim -> fim
+					//Caso seja um n√≥ folha e a resposta for sim -> fim
 					printf("EU GANHEI!!!!\n\n");
 					acabou = 1;
 				}
 				else{
-					//Caso seja um nÛ folha e a resposta for n„o -> complementa a arvore
-					printf("\nAhhh, eu perdi...\n\nNo que vocÍ pensou: ");
+					//Caso seja um n√≥ folha e a resposta for n√£o -> complementa a arvore
+					printf("\nAhhh, eu perdi...\n\nNo que voc√™ pensou: ");
 					gets(pensou);
 					fflush(stdin);
 					printf("Me ajude a melhorar...\n");
-					printf("FaÁa uma pergunta que È v·lido para o %s e n„o È v·lido para o %s:\n",pensou,noatual->info);
+					printf("Fa√ßa uma pergunta que √© v√°lido para o %s e n√£o √© v√°lido para o %s:\n",pensou,noatual->info);
 					gets(pergunta);
 					fflush(stdin);
 					char respostaErrada[40];
@@ -153,7 +153,7 @@ void main(){
 				}
 			}	
 			else{
-				//O nÛ atual È outra pergunta
+				//O n√≥ atual √© outra pergunta
 				acabou = 0;
 			}
 		}
@@ -163,7 +163,7 @@ void main(){
 		printf("\t|   Jogar Novamente   (1)      |\n");
 		printf("\t|   Finalizar         (0)      |\n");
 		printf("\t|==============================|\n");	
-		printf("\tDigite sua opÁ„o -> ");
+		printf("\tDigite sua op√ß√£o -> ");
 		scanf("%d",&opcao);
 		system("cls");
 	}
