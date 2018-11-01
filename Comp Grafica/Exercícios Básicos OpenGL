@@ -1,0 +1,145 @@
+/*
+
+                   |---|  |--\  |---  |\   |  /---\  |
+                   |   |  |__|  |___  | \  |  |      |
+                   |   |  |     |     |  \ |  |  -+- |
+                   \---/  |     |---  |   \|  \---|  \----
+
+                            Aula 01 - OpenGl: Janelas  
+
+ PrimeiroPrograma - Prof. Leandro Alves Neves
+ Um programa OpenGL simples que abre uma janela GLUT
+ Este código está baseado no Simple.c, exemplo 
+ disponível no livro "OpenGL SuperBible" e "OpenGl: uma abordagem prática e objetiva" , 
+ 2nd Edition, de Richard S. e Wright Jr.*/
+
+#include <stdlib.h>
+#include "glut.h"
+#include "glu.h"
+#include "gl.h"
+#include <math.h>
+#include <stdio.h>
+//#include <GL/freeglut.h>
+void DISPLAY ();
+int main(int argc,char **argv);
+
+// Inicializa parâmetros de rendering
+void DISPLAY ()
+{   
+    // Define a cor de fundo da janela de visualização como preta
+    glClearColor(1, 1, 1, 0); // Cor do fundo
+    glMatrixMode(GL_PROJECTION); //Ativa matriz de projeção
+    glLoadIdentity();//"Limpa" ou "transforma" a matriz em identidade, reduzindo possíveis erros.    
+    gluOrtho2D(-200,200,-200,200);//Define tipo de projeção (2D) e o tamanho
+    glMatrixMode(GL_MODELVIEW);//Ativa matriz de visualização
+	glLoadIdentity();//"Limpa" ou "transforma" a matriz em identidade, reduzindo possíveis erros.
+	//Limpa a janela de visualização com a cor de fundo especificada
+ 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); /* "limpa" um buffer particular ou combinações de buffers, 
+                                                         onde buffer é uma área de armazenamento para informações da imagem. 
+                                                        Nesse caso, está "limpando os buffers para suportarem animações */
+   //Chamada para Função  ou funções para desenhar o objeto/cena...
+   //----------------------------------------------------------------
+   glColor3ub(0,0,0);//Define uma cor para a primitiva
+	
+	int i;
+	/*Ex 1 -> X na tela com pontos
+	glBegin(GL_POINTS);
+	for(i = -400; i < 400 ; i+= 5){
+		glVertex3f(i,i,0);
+		glVertex3f(i,-i,0);
+	}
+	*/
+	
+	/* Ex 2 -> Tela cheia de pontos
+	int j;
+	glBegin(GL_POINTS);
+	for(i = -400; i < 400 ; i+=5){
+		for(j = -400 ; j < 400 ; j +=5){
+			glVertex3f(i,j,0);
+		}
+		
+	}
+	*/
+	
+	/* Ex 3 -> Quadrados progressivos
+	glBegin(GL_LINES);	
+	for(i = -400 ; i < 400 ; i +=5){
+		glVertex3f(-i,i,0);	
+		glVertex3f(i,i,0);
+	
+		glVertex3f(i,i,0);
+		glVertex3f(i,-i,0);
+	}
+	*/
+	
+	/* Ex 4 -> Esfera na origem com pontos
+	glBegin(GL_POINTS);
+	float teta;
+	int x,y;
+	float raio = 50;
+	for(teta = 0; teta < 360; teta +=20){
+		y = raio * sin(teta*(3.141492/180));
+		x = raio * cos(teta*(3.141492/180));
+		glVertex3f(x,y,0);
+	}
+	*/
+	
+	/* Ex 5 -> Esfera na origem com linhas interacaladas
+	glBegin(GL_LINES);
+	float teta;
+	int x,y;
+	float raio = 50;
+	for(teta = 0; teta < 360; teta +=20){
+		y = raio * sin(teta*(3.141492/180));
+		x = raio * cos(teta*(3.141492/180));
+		glVertex3f(x,y,0);
+	}
+	*/
+	
+	
+	/* Ex 6 -> Esfera fechada na origem
+	glBegin(GL_LINE_LOOP);
+	float teta;
+	int x,y;
+	float raio = 50;
+	for(teta = 0; teta < 360; teta +=20){
+		y = raio * sin(teta*(3.141492/180));
+		x = raio * cos(teta*(3.141492/180));
+		glVertex3f(x,y,0);
+	}
+	*/
+	
+	/* Ex 7 -> Esfera com ultimo ponto aberto, podendo ser iniciada na origem (a=b=0) ou não (a!=0 || b!=0)
+	glBegin(GL_LINE_STRIP);
+	float teta;
+	int x,y;
+	int a,b;
+	a = b = 0; // origem
+	float raio = 50;
+	for(teta = 0; teta < 360; teta +=20){
+		y = raio * sin(teta*(3.141492/180)) - b;
+		x = raio * cos(teta*(3.141492/180)) - a;
+		glVertex3f(x,y,0);
+	}
+	*/
+
+	glEnd();
+glutSwapBuffers();
+   
+    
+}
+
+int main(int argc,char **argv)
+{
+   glutInit(&argc, argv); // Initializes glut
+    
+   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+   /*Avisa a GLUT que modo de exibição deve ser usado quando a janela é criada. 
+   //  Nesse caso, permite: uma única janela; cores compostas por Verm. Verde e Azul; e, */
+   glutInitWindowSize(400,400);
+   glutInitWindowPosition(100,100);
+   glutCreateWindow("Aula 01 (OpenGL) - Meu Primeiro Programa");
+   glutDisplayFunc(DISPLAY);
+   glutMainLoop();
+   return 0;
+}
