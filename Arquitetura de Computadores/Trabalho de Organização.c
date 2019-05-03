@@ -1,33 +1,33 @@
-/************************************************
+/********************************************************
 *  	Trabalho de Organização de Computadores		*
-*************************************************
-*   Professor: Guilherme Freitas                *
-*************************************************
+*********************************************************
+*   Professor: Guilherme Freitas                	*
+*********************************************************
 *	* Integrantes:		 *||* Data de Entrega:	*
 *	*	Mateus Matinato	 *||*	 04/12/2017     *
-*	*	João Marcos Rosa *||* 					*
+*	*	João Marcos Rosa *||* 			*
 *	*	Jonatan Rodrigues*||* Data de Edição:   *
 *	*	Vinicius Freitas *||* 27/11 - 16:45  	*
-*************************************************
-* Opções do Programa:
-* 	1) Escrever Programa: O usuário pode entrar *
-* 	com uma sequência de comandos que serão sal-*
-*	vos na memória, os comandos devem respeitar *
-*	o formato exigido:							*
+*********************************************************
+* Opções do Programa:					*
+* 	1) Escrever Programa: O usuário pode entrar 	*
+* 	com uma sequência de comandos que serão sal-	*
+*	vos na memória, os comandos devem respeitar 	*
+*	o formato exigido:				*
 *		(3 bits -> opcode | 7 bits -> endereço)	*
-*												*
-*	2) Executar Programa: Executa todas as ins- *
+*							*
+*	2) Executar Programa: Executa todas as ins- 	*
 *	truções salvas na memória. Devem ser execu-	*
-*	tadas na ordem correta e realizando as ope- *
-*	rações de acordo com o indicado				*
-*												*
-*	3) Exibir Endereços de Memória: Exibir as   *
-*	palavras salvas na memória entre um endereço*
-*	A e B. 										*
-*												*
-*	4) Exibir Processador: Exibe na tela o con- *
-*	teúdo atual do PC, IR, MAR e MBR			*
-************************************************/
+*	tadas na ordem correta e realizando as ope- 	*
+*	rações de acordo com o indicado			*
+*							*
+*	3) Exibir Endereços de Memória: Exibir as   	*
+*	palavras salvas na memória entre um endereço	*
+*	A e B. 						*
+*							*
+*	4) Exibir Processador: Exibe na tela o con- 	*
+*	teúdo atual do PC, IR, MAR e MBR		*
+*********************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
